@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Nano-IT Cyber Control</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #00ffcc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        #gameCanvas {
+            background-color: #111827;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🤖 Nano-IT Cyber Control Engine</h1>
+    <p>ใช้ปุ่ม **ลูกศร (ขึ้น-ลง-ซ้าย-ขวา)** บังคับ Nanobot</p>
+
+    <!-- พื้นที่แสดงผลเกม -->
+    <canvas id="gameCanvas" width="600" height="400"></canvas>
+
+    <!-- ดึงไฟล์เขียนระบบเกมมาทำงาน -->
+    <script src="game.js"></script>
+
+</body>
+</html>
