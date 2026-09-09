@@ -632,7 +632,7 @@ function drawMainBox(x, y, size) {
         ctx.fillRect(size - 20, size - 20, 10, 10);
 
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 65px Arial";
+        ctx.font = 'bold 65px Tahoma, "Leelawadee UI", sans-serif';
         ctx.fillText("?", 37, 90);
     }
 
@@ -746,11 +746,11 @@ function drawStartScreen() {
     ctx.textAlign = "center";
 
     ctx.fillStyle = "#00ffcc";
-    ctx.font = "bold 32px Arial";
+    ctx.font = 'bold 32px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText("🔬 NANO TECH PIXEL GUESS", canvas.width / 2, 90);
 
     ctx.fillStyle = "#ffffff";
-    ctx.font = "16px Arial";
+    ctx.font = '16px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText("เกมทายชื่อเทคโนโลยีนาโนสุดล้ำจากภาพ Pixel Art", canvas.width / 2, 130);
 
     ctx.fillStyle = isHoverStartBtn ? "#00ffcc" : "#1e293b";
@@ -761,7 +761,7 @@ function drawStartScreen() {
     ctx.strokeRect(startBtn.x, startBtn.y, startBtn.width, startBtn.height);
 
     ctx.fillStyle = isHoverStartBtn ? "#0f172a" : "#00ffcc";
-    ctx.font = "bold 20px Arial";
+    ctx.font = 'bold 20px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText("🎮 เริ่มเล่นเกม", canvas.width / 2, startBtn.y + 32);
 
     ctx.fillStyle = "rgba(30, 41, 59, 0.7)";
@@ -771,22 +771,68 @@ function drawStartScreen() {
     ctx.strokeRect(100, 280, 400, 70);
 
     ctx.fillStyle = "#fbbf24";
-    ctx.font = "bold 14px Arial";
+    ctx.font = 'bold 14px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText("👨‍💻 จัดทำโดย", canvas.width / 2, 303);
 
     ctx.fillStyle = "#ffffff";
-    ctx.font = "15px Arial";
+    ctx.font = '15px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText(creatorName, canvas.width / 2, 325);
 
     ctx.fillStyle = "#cbd5e1";
-    ctx.font = "12px Arial";
+    ctx.font = '12px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText(creatorRole, canvas.width / 2, 342);
 
     ctx.textAlign = "start";
 }
 
+function drawBackground() {
+    const time = Date.now() * 0.00035;
+    const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    gradient.addColorStop(0, "#07111f");
+    gradient.addColorStop(0.5, "#10233a");
+    gradient.addColorStop(1, "#06151a");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.save();
+    ctx.globalAlpha = 0.16;
+    ctx.strokeStyle = "#00ffcc";
+    ctx.lineWidth = 1;
+    for (let x = 0; x <= canvas.width; x += 30) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
+    }
+    for (let y = 0; y <= canvas.height; y += 30) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+    }
+
+    const nodes = [
+        { x: 35, y: 55, radius: 2, phase: 0 },
+        { x: 560, y: 70, radius: 3, phase: 1.4 },
+        { x: 520, y: 350, radius: 2, phase: 2.3 },
+        { x: 70, y: 365, radius: 3, phase: 3.1 }
+    ];
+    nodes.forEach(node => {
+        const pulse = 0.45 + Math.sin(time + node.phase) * 0.25;
+        ctx.globalAlpha = pulse;
+        ctx.fillStyle = "#00ffcc";
+        ctx.fillRect(node.x, node.y, node.radius, node.radius);
+        ctx.globalAlpha = pulse * 0.25;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 12 + Math.sin(time + node.phase) * 4, 0, Math.PI * 2);
+        ctx.stroke();
+    });
+    ctx.restore();
+}
+
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawBackground();
 
     updateGameIntroAnimation();
 
@@ -821,12 +867,12 @@ function draw() {
             if (p.y > canvas.height) p.y = -10;
         });
 
-        ctx.font = "80px Arial";
+        ctx.font = '80px Tahoma, "Leelawadee UI", sans-serif';
         ctx.textAlign = "center";
         ctx.fillText("🏆", canvas.width / 2, 130);
 
         ctx.fillStyle = "#00ffcc";
-        ctx.font = "bold 26px Arial";
+        ctx.font = 'bold 26px Tahoma, "Leelawadee UI", sans-serif';
         ctx.fillText("🎉 VICTORY! ครบ 10 คะแนนแล้ว", canvas.width / 2, 200);
 
         ctx.fillStyle = "#ffffff";
@@ -842,7 +888,7 @@ function draw() {
         ctx.strokeRect(restartBtn.x, restartBtn.y, restartBtn.width, restartBtn.height);
 
         ctx.fillStyle = isHoverRestartBtn ? "#0f172a" : "#00ffcc";
-        ctx.font = "bold 18px Arial";
+        ctx.font = 'bold 18px Tahoma, "Leelawadee UI", sans-serif';
         ctx.fillText("🔄 เล่นใหม่อีกครั้ง", canvas.width / 2, restartBtn.y + 29);
 
         ctx.textAlign = "start";
@@ -855,7 +901,7 @@ function draw() {
     drawMainBox(45, 30, 120);
 
     ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 16px Arial";
+    ctx.font = 'bold 16px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText(`คะแนนสะสม: ${score} / ${targetScore}`, 210, 40);
 
     ctx.fillStyle = "#1e293b";
@@ -864,7 +910,7 @@ function draw() {
     ctx.fillRect(210, 50, (score / targetScore) * 200, 12);
 
     ctx.fillStyle = "#00e5ff";
-    ctx.font = "14px Arial";
+    ctx.font = '14px Tahoma, "Leelawadee UI", sans-serif';
     for (let i = 0; i <= currentHintIndex; i++) {
         ctx.fillText(currentQuestion.hints[i], 210, 95 + (i * 22));
     }
@@ -878,7 +924,7 @@ function draw() {
     }
 
     ctx.fillStyle = feedbackMessage.includes("ถูกต้อง") ? "#00ffcc" : "#ff0055";
-    ctx.font = "bold 13px Arial";
+    ctx.font = 'bold 13px Tahoma, "Leelawadee UI", sans-serif';
     ctx.fillText(feedbackMessage, 50, 215);
 
     buttons.forEach(btn => {

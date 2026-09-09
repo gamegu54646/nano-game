@@ -2,30 +2,37 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nano-IT Cyber Control</title>
-    <style>
-        body {
-            background-color: #0b0f19;
-            color: #00ffcc;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        #gameCanvas {
-            background-color: #111827;
-            border: 2px solid #00ffcc;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>🤖 Nano-IT Cyber Control Engine</h1>
-    <p>ใช้ปุ่ม **ลูกศร (ขึ้น-ลง-ซ้าย-ขวา)** บังคับ Nanobot</p>
-
-    <!-- พื้นที่แสดงผลเกม -->
-    <canvas id="gameCanvas" width="600" height="400"></canvas>
+    <main class="site-shell">
+        <div class="ambient ambient-left" aria-hidden="true"></div>
+        <div class="ambient ambient-right" aria-hidden="true"></div>
+        <header class="site-header">
+            <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div>
+                <p class="eyebrow">NANO TECHNOLOGY / PIXEL LAB</p>
+                <h1>Nano-IT Cyber Control</h1>
+                <p class="tagline">สำรวจโลกนาโนผ่านสายตาของหุ่นยนต์จิ๋ว</p>
+            </div>
+            <div class="status-chip"><span class="status-dot"></span> SYSTEM ONLINE</div>
+        </header>
+        <section class="game-stage" aria-label="เกมทายเทคโนโลยีนาโน">
+            <div class="robot robot-left" aria-hidden="true">
+                <div class="robot-antenna"></div>
+                <div class="robot-head"><i></i><i></i><b></b></div>
+                <div class="robot-body"><span></span><span></span></div>
+                <div class="robot-leg robot-leg-left"></div><div class="robot-leg robot-leg-right"></div>
+            </div>
+            <div class="nano-orbit orbit-one" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="nano-orbit orbit-two" aria-hidden="true"><i></i><i></i><i></i></div>
+            <canvas id="gameCanvas" width="600" height="400"></canvas>
+        </section>
+        <footer class="site-footer"><span>MICRO SCALE / BIG IDEAS</span><span class="footer-line"></span><span>ใช้เมาส์เลือกคำตอบเพื่อสแกนวัตถุ</span></footer>
+    </main>
 
     <!-- ดึงไฟล์เขียนระบบเกมมาทำงาน -->
     <script src="game.js"></script>
